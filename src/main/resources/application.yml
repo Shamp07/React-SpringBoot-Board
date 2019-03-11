@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: "c9kdtZ4l6AgUTt1OOtC5abItOTlzrB/gYdnvGqz8kgXV/TVFdGh7jRjc+97KIOxU"
+    username: "osiojoU9ky18vV8lwyzBzg=="
+    password: "Z8FbuaKCyjOJkpUSOZo5ZQ=="
+  http:
+    encoding:
+      charset:    UTF-8
+  mvc:
+    view:
+      prefix:     /jsp/
+      suffix:     .jsp
+      
+server:
+  port : 9080
+  tomcat:
+    uri-encoding: UTF-8
+    
+mybatis:
+  config-location: classpath:mybatis-config.xml
