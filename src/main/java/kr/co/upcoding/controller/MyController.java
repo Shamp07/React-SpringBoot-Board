@@ -17,9 +17,9 @@ public class MyController {
 	@Autowired
 	TestMapper testMapper;
  
-    @GetMapping("/{name}.html")
-    public String page(@PathVariable String name, Model model) {
-        model.addAttribute("pageName", name);
+    @GetMapping("/")
+    public String page(Model model) {
+        model.addAttribute("pageName", "main");
         return "page";
     }
  
