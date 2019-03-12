@@ -4,7 +4,8 @@ module.exports = {
     context: path.resolve(__dirname, 'src/main/jsx/'),
     entry: {
         main: './MainPage.jsx',
-        menubar: './menu/Menubar.jsx'
+        menubar: './menu/Menubar.jsx',
+        board : './board/Board.jsx'
     },
     devtool: 'sourcemaps',
     cache: true,

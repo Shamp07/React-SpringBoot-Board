@@ -10,6 +10,7 @@
      @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
      body { /** 폰트 영문 이름 지정 **/
          font-family: 'Jeju Gothic', sans-serif !important;
+         background-color : #f8f8f8 !important;
      }
  </style>
 <body>
