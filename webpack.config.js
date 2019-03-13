@@ -4,6 +4,7 @@ module.exports = {
     context: path.resolve(__dirname, 'src/main/jsx/'),
     entry: {
         main: './MainPage.jsx',
+        loginmodal : './login/LoginModal.jsx',
         menubar: './menu/Menubar.jsx',
         board : './board/Board.jsx'
     },
@@ -21,7 +22,13 @@ module.exports = {
             use: {
                 loader: 'babel-loader',
                 options: {
-                    presets: [ '@babel/preset-env', '@babel/preset-react' ]
+                    presets: [ '@babel/preset-env',{
+                        plugins: [
+                            [
+                                "@babel/plugin-proposal-class-properties"
+                            ]
+                        ],
+                    }, '@babel/preset-react' ]
                 }
             }
         }, {
