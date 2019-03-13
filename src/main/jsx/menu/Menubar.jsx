@@ -3,29 +3,15 @@ import * as rs from 'reactstrap';
 import styled from 'styled-components';
 
 class Menubar extends React.Component {
-    componentWillReceiveProps(nextProps) {
-       console.log("Menubar@componentWillReceiveProps");
-    }
-
-    componentDidMount() {
-        console.log("Menubar@componentDidMount");
-    }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps);
         if(nextProps.onModalYN){
             this.toggle();
         }
     }
 
-    componentDidUpdate() {
-        console.log("Menubar@componentDidUpdate");
-    }
 
-    componentWillUnmount() {
-        console.log("Menubar@componentWillUnmount");
-
-    }render() {
+    render() {
 
         const Box = styled.div`
           padding: 1.5rem;

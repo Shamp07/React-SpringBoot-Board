@@ -11,8 +11,6 @@ import javax.crypto.spec.SecretKeySpec;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.InvalidAlgorithmParameterException;
-import java.util.Map;
-import java.util.Optional;
 
 import org.apache.commons.codec.binary.Base64;
 
