@@ -1,6 +1,7 @@
 import React from 'react';
 import * as rs from 'reactstrap';
 import styled from 'styled-components';
+import axios from 'axios';
 
 class Menubar extends React.Component {
 
@@ -10,6 +11,18 @@ class Menubar extends React.Component {
         }
     }
 
+    logout = () => {
+        const that = this;
+        axios.post("/logout",{
+
+        }).then(function(response){
+            if(response.data === "Success")
+                that.props.sessionCheck();
+
+        }).catch(function(){
+
+        })
+    }
 
     render() {
 
@@ -49,13 +62,29 @@ class Menubar extends React.Component {
             borderTop : "0.5px solid #555",
             borderBottom : "none"
         };
+
+        console.log(this.props.userName);
     return(
+
                 <Box>
                     <Title>게시판</Title>
                     <Sub_title>
-                    <BoardLink onClick={this.props.ToggleModal}>로그인   </BoardLink>
-                    |
-                    <BoardLink>     회원가입</BoardLink>
+                        {
+                            this.props.userName === ""
+                                ? (
+                                    <React.Fragment>
+                                        <BoardLink
+                                            onClick={this.props.ToggleModal}>로그인</BoardLink>{' '}|{' '}<BoardLink>회원가입</BoardLink>
+                                    </React.Fragment>
+                                )
+                                : (
+                                    <React.Fragment>
+                                        <BoardLink>{this.props.userName}님 환영합니다! <br></br> </BoardLink>
+                                        <br></br>
+                                        <BoardLink onClick={this.logout}>로그아웃</BoardLink>
+                                    </React.Fragment>
+                                )
+                        }
                     </Sub_title>
                     <rs.ListGroup>
                         <rs.ListGroupItem style={liStyle}><BoardLink>Q&A</BoardLink></rs.ListGroupItem>

@@ -5,6 +5,8 @@ module.exports = {
     entry: {
         main: './MainPage.jsx',
         loginmodal : './login/LoginModal.jsx',
+        alertmodal : './util/AlertModal.jsx',
+        loadingmodal : './util/loadingModal.jsx',
         menubar: './menu/Menubar.jsx',
         board : './board/Board.jsx'
     },

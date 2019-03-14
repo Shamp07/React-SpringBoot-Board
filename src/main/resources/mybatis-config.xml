@@ -7,6 +7,6 @@
         <package name="kr.co.upcoding.vo"/>
     </typeAliases>
     <mappers>
-        <mapper resource="mapper/testMapper.xml"/>
+        <mapper resource="mapper/userMapper.xml"/>
     </mappers>
 </configuration>
