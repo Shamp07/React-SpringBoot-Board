@@ -52,7 +52,7 @@ class LoginModal extends React.Component {
         }
 
         const inputStyle ={
-            fontFamily : "arial"
+            fontFamily : "aria"
         }
 
         return (

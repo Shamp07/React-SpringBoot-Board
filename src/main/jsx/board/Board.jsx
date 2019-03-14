@@ -2,6 +2,8 @@ import React from 'react';
 import * as rs from 'reactstrap';
 import styled, { css } from 'styled-components';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 class Board extends React.Component {
 
 
@@ -26,19 +28,50 @@ class Board extends React.Component {
         `;
 
         const Board_Header = styled.div`
-            width : 100%;
             height : 150px;
             padding : 20px;
             padding-top : 100px
+            width : 900px;
+            margin : 0 auto;
         `;
 
         const pagination_layout = {
             width : '7vw',
             margin : "auto"
         }
+
+        const selectStyle = {
+            display : "inline",
+            width : '7vw',
+            float : 'left'
+        }
+
+        const buttonStyle = {
+            float : 'right'
+        }
+
+        const searchStyle = {
+            width : '15vw',
+            float : "right",
+            marginRight : "30px"
+        }
+
         return(
             <Board_layout>
-                <Board_Header></Board_Header>
+                <Board_Header>
+                    <rs.Button style={buttonStyle}>글쓰기<FontAwesomeIcon icon="igloo" /></rs.Button>
+                    <rs.Input style={selectStyle} type="select" name="select" id="exampleSelect">
+                        <option>카테고리 1</option>
+                        <option>카테고리 2</option>
+                        <option>카테고리 3</option>
+                        <option>카테고리 4</option>
+                        <option>카테고리 5</option>
+                    </rs.Input>
+                    <rs.InputGroup style={searchStyle}>
+                        <rs.Input placeholder="검색할 키워드를 입력해주세요..." />
+                        <rs.InputGroupAddon addonType="append">검색</rs.InputGroupAddon>
+                    </rs.InputGroup>
+                </Board_Header>
                 <Board_wrapper>
                     <rs.Table>
                         <colgroup>
