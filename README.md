@@ -4,14 +4,15 @@ FrontEnd Library React and BackEnd Framework Spring boot in Board Project
 SpringBoot 와 React 의 조합으로 만들어진 게시판입니다. 
 
 
-| 테이블 명세서 |                |                  |            |        |        |          |                      |
-| ------------- | -------------- | ---------------- | ---------- | ------ | ------ | -------- | -------------------- |
-| 시스템명      | 게시판         |                  |            |        |        |          |                      |
-| 테이블 ID     | ACCOUNT        | 작성자           | 배진영     | 수정자 |        |          |                      |
-| 테이블명      | 계정           | 작성일           | 2019-03-10 | 수정일 |        |          |                      |
-| NO            | 컬럼 ID        | 컬럼명           | Type       | Unique | Length | NULLABLE | Key                  |
-| 1             | U_ID           | U_ID             | NUMBER     | Y      |        | N        | PK                   |
-| 2             | USER_ID        | 유저ID           | VARCHAR2   | Y      | 30     | N        |                      |
+#테이블 명세서
+
+| ------------- | -------------- | ---------------- | ---------- | ------ | ------ | -------- | ------------------ |
+| 시스템명      | 게시판         |                  |            |        |        |          |                    |
+| 테이블 ID     | ACCOUNT        | 작성자           | 배진영     | 수정자 |        |          |                    |
+| 테이블명      | 계정           | 작성일           | 2019-03-10 | 수정일 |        |          |                    |
+| NO            | 컬럼 ID        | 컬럼명           | Type       | Unique | Length | NULLABLE | Key                |
+| 1             | U_ID           | U_ID             | NUMBER     | Y      |        | N        | PK                 |
+| 2             | USER_ID        | 유저ID           | VARCHAR2   | Y      | 30     | N        |                    |
 | 3             | USER_PW        | 유저 비밀번호    | VARCHAR2   |        | 100    | N        |                      |
 | 4             | USER_NAME      | 유저 닉네임      | VARCHAR2   |        | 100    | N        |                      |
 | 테이블 ID     | BOARD_CATEGORY | 작성자           | 배진영     | 수정자 |        |          |                      |
