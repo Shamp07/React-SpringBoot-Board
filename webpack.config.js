@@ -8,7 +8,9 @@ module.exports = {
         alertmodal : './util/AlertModal.jsx',
         loadingmodal : './util/loadingModal.jsx',
         menubar: './menu/Menubar.jsx',
-        board : './board/Board.jsx'
+        board : './board/Board.jsx',
+        boardlist : './board/BoardList.jsx',
+        boardposting : './board/BoardPosting.jsx'
     },
     devtool: 'sourcemaps',
     cache: true,

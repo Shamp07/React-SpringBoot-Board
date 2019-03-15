@@ -62,8 +62,6 @@ class Menubar extends React.Component {
             borderTop : "0.5px solid #555",
             borderBottom : "none"
         };
-
-        console.log(this.props.userName);
     return(
 
                 <Box>

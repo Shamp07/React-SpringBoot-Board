@@ -21,7 +21,6 @@ class LoginModal extends React.Component {
             .then(function (response) {
                 setTimeout(function(){
                     that.props.ToggleLoadingModal();
-                    console.log(response.data);
 
                     if(response.data == "Success"){
                         that.props.ToggleModal();
@@ -31,7 +30,7 @@ class LoginModal extends React.Component {
                     else
                         that.props.ToggleAlertModal("유저네임이나 비밀번호가 알맞지 않습니다.");
 
-                },1000);
+                },500);
             })
             .catch(function (error) {
                 console.log(error);

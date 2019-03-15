@@ -20,7 +20,9 @@ class MainPage extends React.Component {
         alertLabel : "",
 
         loginYN : false,
-        userName : ""
+        userName : "",
+
+        page : "BoardList"
     };
 
     componentWillMount() {
@@ -47,6 +49,12 @@ class MainPage extends React.Component {
         }) .catch(function(){
 
         });
+    };
+
+    changePage = (page) => {
+        this.setState({
+            page : page
+        })
     };
 
 
@@ -78,7 +86,7 @@ class MainPage extends React.Component {
         return (
         	<div>
 	        	<Menubar ToggleModal={this.ToggleModal} userName={this.state.userName} sessionCheck={this.sessionCheck}/>
-	        	<Board/>
+	        	<Board page={this.state.page} changePage={this.changePage}/>
                 <LoginModal onModalYN={this.state.onModalYN} ToggleModal={this.ToggleModal} ToggleLoadingModal={this.ToggleLoadingModal} ToggleAlertModal={this.ToggleAlertModal} sessionCheck={this.sessionCheck}/>
                 <LoadingModal onLoadingModalYN={this.state.onLoadingModalYN} ToggleLoadingModal={this.ToggleLoadingModal}/>
                 <AlertModal onAlertModalYN={this.state.onAlertModalYN} ToggleAlertModal={this.ToggleAlertModal} alertLabel={this.state.alertLabel}/>
