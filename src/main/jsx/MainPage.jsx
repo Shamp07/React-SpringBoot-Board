@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import styled from 'styled-components'
 
 import Menubar from './menu/Menubar.jsx';
 import Board from './board/Board.jsx';
@@ -11,6 +12,9 @@ import LoginModal from './login/LoginModal.jsx';
 import LoadingModal from './util/LoadingModal.jsx';
 import AlertModal from "./util/AlertModal.jsx";
 
+const Wrapper = styled.div`
+    
+`;
 
 class MainPage extends React.Component {
     state = {
@@ -22,12 +26,30 @@ class MainPage extends React.Component {
         loginYN : false,
         userName : "",
 
-        page : "BoardList"
+        page : "BoardList",
+
+        boardCategory : []
     };
 
     componentWillMount() {
         this.sessionCheck();
+        this.getBoardCatetories();
     }
+
+    getBoardCatetories = () => {
+        const that = this;
+        axios.post("/getcatetory",{
+
+        }).then(function(response){
+            that.setState({
+                boardCategory : response.data
+            });
+
+        }).catch(function(response){
+            console.log(response);
+            that.ToggleAlertModal("오류 났다 씹새야");
+        })
+    };
 
     sessionCheck = () => {
         const that = this;
@@ -84,13 +106,13 @@ class MainPage extends React.Component {
 
     render() {
         return (
-        	<div>
+        	<Wrapper>
 	        	<Menubar ToggleModal={this.ToggleModal} userName={this.state.userName} sessionCheck={this.sessionCheck}/>
-	        	<Board page={this.state.page} changePage={this.changePage}/>
+	        	<Board page={this.state.page} changePage={this.changePage} boardCategory={this.state.boardCategory}/>
                 <LoginModal onModalYN={this.state.onModalYN} ToggleModal={this.ToggleModal} ToggleLoadingModal={this.ToggleLoadingModal} ToggleAlertModal={this.ToggleAlertModal} sessionCheck={this.sessionCheck}/>
                 <LoadingModal onLoadingModalYN={this.state.onLoadingModalYN} ToggleLoadingModal={this.ToggleLoadingModal}/>
                 <AlertModal onAlertModalYN={this.state.onAlertModalYN} ToggleAlertModal={this.ToggleAlertModal} alertLabel={this.state.alertLabel}/>
-        	</div>
+        	</Wrapper>
         );
     }
  

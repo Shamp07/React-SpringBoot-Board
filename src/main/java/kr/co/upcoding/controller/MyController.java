@@ -1,7 +1,9 @@
 package kr.co.upcoding.controller;
  
+import kr.co.upcoding.mapper.CommonMapper;
 import kr.co.upcoding.mapper.UserMapper;
 import kr.co.upcoding.vo.AccountVO;
+import kr.co.upcoding.vo.CategoryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,10 @@ public class MyController {
 	
 	@Autowired
     UserMapper userMapper;
+
+    @Autowired
+    CommonMapper commonMapper;
+
  
     @GetMapping("/")
     public String page(Model model) {
@@ -48,5 +54,11 @@ public class MyController {
     public String logout(HttpServletRequest req){
         req.getSession().invalidate();
         return "Success";
+    }
+
+    @PostMapping("/getcatetory")
+    @ResponseBody
+    public List<CategoryVO> getCategory(){
+        return commonMapper.getCatetory();
     }
 }

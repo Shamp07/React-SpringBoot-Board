@@ -3,10 +3,8 @@ import styled from 'styled-components';
 import BoardList from './BoardList.jsx';
 import BoardPosting from './BoardPosting.jsx';
 
-class Board extends React.Component {
 
-    render(){
-        const Board_layout = styled.div`
+const Board_layout = styled.div`
             width : 1000px;
             height : 100vh;
             background-color : white;
@@ -14,12 +12,14 @@ class Board extends React.Component {
             margin-left : 250px;
         `;
 
+class Board extends React.Component {
+    render(){
         return(
             <Board_layout>
                 {
                     this.props.page === "BoardList"
-                        ? (<BoardList changePage={this.props.changePage}/>)
-                        : (<BoardPosting/>)
+                        ? (<BoardList changePage={this.props.changePage} boardCategory={this.props.boardCategory}/>)
+                        : (<BoardPosting boardCategory={this.props.boardCategory} />)
                 }
             </Board_layout>
         )

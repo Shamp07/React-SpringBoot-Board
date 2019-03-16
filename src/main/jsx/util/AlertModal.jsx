@@ -2,6 +2,11 @@ import React from 'react';
 import * as rs from 'reactstrap';
 import styled from 'styled-components';
 
+const Text = styled.span`
+            vertical-align : middle;
+            font-size : 20px;
+        `
+
 class AlertModal extends React.Component {
 
     Toggle = () => {
@@ -9,12 +14,6 @@ class AlertModal extends React.Component {
     }
 
     render() {
-        const Text = styled.span`
-            vertical-align : middle;
-            font-size : 20px;
-        `
-
-
 
         return (
             <div>

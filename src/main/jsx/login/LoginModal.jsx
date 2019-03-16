@@ -2,6 +2,15 @@ import React from 'react';
 import * as rs from 'reactstrap';
 import axios from 'axios';
 
+const grpStyle = {
+    margin : "10px 0px",
+    color : "black !important",
+}
+
+const inputStyle ={
+    fontFamily : "aria"
+}
+
 class LoginModal extends React.Component {
 
     state = {
@@ -45,14 +54,7 @@ class LoginModal extends React.Component {
 
 
     render() {
-        const grpStyle = {
-            margin : "10px 0px",
-            color : "black !important",
-        }
 
-        const inputStyle ={
-            fontFamily : "aria"
-        }
 
         return (
             <div>

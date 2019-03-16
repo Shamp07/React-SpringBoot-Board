@@ -1,17 +1,7 @@
 import React from 'react'
 import * as rs from "reactstrap";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
-
-
-class BoardList extends React.Component{
-
-    goPost = () => {
-        this.props.changePage("BoardPosting");
-    }
-
-    render(){
-        const Board_Header = styled.div`
+const Board_Header = styled.div`
             height : 150px;
             padding : 20px;
             padding-top : 100px
@@ -19,7 +9,7 @@ class BoardList extends React.Component{
             margin : 0 auto;
         `;
 
-        const Board_wrapper = styled.div`
+const Board_wrapper = styled.div`
             width : 900px;
             height : 70vh;
             border : 1px solid #e6e6e6;
@@ -30,43 +20,53 @@ class BoardList extends React.Component{
             margin-bottom : 20px;
         `;
 
+const pagination_layout = {
+    width : '7vw',
+    margin : "auto"
+};
 
+const selectStyle = {
+    display : "inline",
+    width : '7vw',
+    float : 'left'
+};
 
-        const pagination_layout = {
-            width : '7vw',
-            margin : "auto"
-        };
+const buttonStyle = {
+    float : 'right'
+};
 
-        const selectStyle = {
-            display : "inline",
-            width : '7vw',
-            float : 'left'
-        };
+const searchStyle = {
+    width : '15vw',
+    float : "right",
+    marginRight : "30px"
+};
 
-        const buttonStyle = {
-            float : 'right'
-        };
+const InputGa = styled(rs.InputGroupAddon)`
+    cursor : pointer;
+`;
 
-        const searchStyle = {
-            width : '15vw',
-            float : "right",
-            marginRight : "30px"
-        };
+class BoardList extends React.Component{
+
+    goPost = () => {
+        this.props.changePage("BoardPosting");
+    }
+
+    render(){
+        const Categories = this.props.boardCategory.map(function(data){
+            return (<option key={data.bc_id} value={data.bc_id}>{data.bc_name}</option>);
+        });
 
         return(
             <React.Fragment>
                 <Board_Header>
-                    <rs.Button style={buttonStyle} onClick={this.goPost}>글쓰기<FontAwesomeIcon icon="igloo" /></rs.Button>
+                    <rs.Button style={buttonStyle} onClick={this.goPost}>글쓰기</rs.Button>
                     <rs.Input style={selectStyle} type="select" name="select" id="exampleSelect">
-                        <option>카테고리 1</option>
-                        <option>카테고리 2</option>
-                        <option>카테고리 3</option>
-                        <option>카테고리 4</option>
-                        <option>카테고리 5</option>
+                        <option value="">전체</option>
+                        {Categories}
                     </rs.Input>
                     <rs.InputGroup style={searchStyle}>
                         <rs.Input placeholder="검색할 키워드를 입력해주세요..." />
-                        <rs.InputGroupAddon addonType="append">검색</rs.InputGroupAddon>
+                        <InputGa addonType="append">검색</InputGa>
                     </rs.InputGroup>
                 </Board_Header>
                 <Board_wrapper>
@@ -88,11 +88,9 @@ class BoardList extends React.Component{
                         </tr>
                         </thead>
                         <tbody>
-
                         </tbody>
                     </rs.Table>
                 </Board_wrapper>
-
                 <rs.Pagination size="sm" aria-label="Page navigation example" style={pagination_layout}>
                     <rs.PaginationItem disabled>
                         <rs.PaginationLink previous href="#" />
