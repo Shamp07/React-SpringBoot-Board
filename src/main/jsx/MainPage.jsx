@@ -108,7 +108,7 @@ class MainPage extends React.Component {
         return (
         	<Wrapper>
 	        	<Menubar ToggleModal={this.ToggleModal} userName={this.state.userName} sessionCheck={this.sessionCheck}/>
-	        	<Board page={this.state.page} changePage={this.changePage} boardCategory={this.state.boardCategory}/>
+	        	<Board page={this.state.page} changePage={this.changePage} boardCategory={this.state.boardCategory} ToggleAlertModal={this.ToggleAlertModal} loginYN={this.state.loginYN}/>
                 <LoginModal onModalYN={this.state.onModalYN} ToggleModal={this.ToggleModal} ToggleLoadingModal={this.ToggleLoadingModal} ToggleAlertModal={this.ToggleAlertModal} sessionCheck={this.sessionCheck}/>
                 <LoadingModal onLoadingModalYN={this.state.onLoadingModalYN} ToggleLoadingModal={this.ToggleLoadingModal}/>
                 <AlertModal onAlertModalYN={this.state.onAlertModalYN} ToggleAlertModal={this.ToggleAlertModal} alertLabel={this.state.alertLabel}/>

@@ -10,7 +10,8 @@ module.exports = {
         menubar: './menu/Menubar.jsx',
         board : './board/Board.jsx',
         boardlist : './board/BoardList.jsx',
-        boardposting : './board/BoardPosting.jsx'
+        boardposting : './board/BoardPosting.jsx',
+        boardpost : './board/BoardPost.jsx'
     },
     devtool: 'sourcemaps',
     cache: true,

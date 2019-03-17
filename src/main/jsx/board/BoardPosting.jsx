@@ -32,9 +32,7 @@ const PostFooter = styled.div`
     margin : auto auto;
 `;
 
-
 class BoardPosting extends React.Component {
-
     state = {
         category : "",
         title : "",
@@ -42,9 +40,27 @@ class BoardPosting extends React.Component {
     };
 
     addPost = () => {
-        axios.post("/addpost",{
-        }).then(function(){
+        const that = this;
 
+        if(!this.props.loginYN){
+            this.props.ToggleAlertModal("로그인을 하셔야 글을 작성하실 수 있습니다.");
+            return;
+        }
+
+        if(this.state.category === "" || this.state.title === "" || this.state.content === ""){
+            this.props.ToggleAlertModal("똑바로 입력해라 십새야");
+            return;
+        }
+
+        axios.post("/addpost",{
+            bc_id : this.state.category,
+            bp_title : this.state.title,
+            bp_content : this.state.content
+        }).then(function(response){
+            console.log(response.data);
+            if(response.data == "Success"){
+                that.goBoardList();
+            }
         }).catch(function(){
 
         });
@@ -57,6 +73,10 @@ class BoardPosting extends React.Component {
         });
     };
 
+    goBoardList = () => {
+        this.props.changePage("BoardList");
+    }
+
     render(){
         const Categories = this.props.boardCategory.map(function(data){
             return (<option key={data.bc_id} value={data.bc_id}>{data.bc_name}</option>);
@@ -67,10 +87,10 @@ class BoardPosting extends React.Component {
                 <Board_Header>
                     <h1>글 작성</h1>
                     <rs.Input type="select" className="mb-2" name="category" onBlur={this.changeValue}>
-                        <option>카테고리를 선택해주세요.</option>
+                        <option value="">카테고리를 선택해주세요.</option>
                         {Categories}
                     </rs.Input>
-                    <rs.Input placeholder="글의 제목을 입력해주세요.." title="" onBlur={this.changeValue}/>
+                    <rs.Input placeholder="글의 제목을 입력해주세요.." name="title" onBlur={this.changeValue}/>
                 </Board_Header>
                 <Board_wrapper>
                     <CKEditor
@@ -80,15 +100,16 @@ class BoardPosting extends React.Component {
 
                         } }
                         onBlur={ editor => {
-                            console.log(editor);
                         } }
                         onChange={ ( event, editor ) => {
-                            console.log(editor);
+                            this.setState({
+                                content : editor.getData()
+                            });
                         } }
                     />
                 </Board_wrapper>
                 <PostFooter>
-                    <rs.Button color="primary" onClick={this.addPost} >등록</rs.Button>{'     '}<rs.Button>취소</rs.Button>
+                    <rs.Button color="primary" onClick={this.addPost} >등록</rs.Button>{'     '}<rs.Button onClick={this.goBoardList}>취소</rs.Button>
                 </PostFooter>
             </React.Fragment>
         )

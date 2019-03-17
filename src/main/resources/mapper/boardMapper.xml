@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.upcoding.mapper.BoardMapper">
+
+    <insert id="addPost" parameterType="PostVO">
+        INSERT INTO BOARD_POST VALUES(
+          (SELECT NVL(MAX(BP_ID),0)+1 FROM BOARD_POST),
+          '${bc_id}',
+          '${bp_id_reply}',
+          '${bp_title}',
+          '${bp_writer}',
+          sysdate,
+          0,
+          '${bp_content}',
+          '${bp_depth}'
+        )
+    </insert>
+
+    <select id="getPost" resultType="PostVO" parameterType="String">
+      SELECT bp.*,ac.USER_NAME as bp_writer_name
+        FROM BOARD_POST bp, ACCOUNT ac
+        WHERE bp.BP_WRITER = ac.U_ID
+        AND bp.BC_ID LIKE '%' || '${value}' || '%'
+    </select>
+
+
+</mapper>

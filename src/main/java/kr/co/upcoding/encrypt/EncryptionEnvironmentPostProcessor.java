@@ -29,8 +29,8 @@ public class EncryptionEnvironmentPostProcessor implements EnvironmentPostProces
 
                 System.out.println("");
                 System.out.println("------- Encrypted Information -------");
-                System.out.println("encrypted spring.datasource.password : " + AES256Cipher.getInstance().AES_Encode(userName));
-                System.out.println("encrypted spring.datasource.username : " + AES256Cipher.getInstance().AES_Encode(password));
+                System.out.println("encrypted spring.datasource.userName : " + AES256Cipher.getInstance().AES_Encode(userName));
+                System.out.println("encrypted spring.datasource.password : " + AES256Cipher.getInstance().AES_Encode(password));
                 System.out.println("encrypted spring.datasource.url : " + AES256Cipher.getInstance().AES_Encode(url));
                 System.out.println("------- Encrypted Information -------");
                 System.out.println("");

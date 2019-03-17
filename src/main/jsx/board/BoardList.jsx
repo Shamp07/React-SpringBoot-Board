@@ -1,6 +1,9 @@
 import React from 'react'
 import * as rs from "reactstrap";
 import styled from "styled-components";
+import axios from "axios";
+import BoardPost from './BoardPost.jsx';
+
 const Board_Header = styled.div`
             height : 150px;
             padding : 20px;
@@ -47,20 +50,68 @@ const InputGa = styled(rs.InputGroupAddon)`
 
 class BoardList extends React.Component{
 
+    state = {
+        BoardList : [],
+        category : ""
+    };
+
     goPost = () => {
+        if(!this.props.loginYN){
+            this.props.ToggleAlertModal("로그인을 하셔야 글을 작성하실 수 있습니다.");
+            return;
+        }
+
         this.props.changePage("BoardPosting");
+    };
+
+    changeValue = (event) => {
+        if(event.target.name === "category"){
+            this.getPost(event.target.value);
+            return;
+        }
+
+        this.setState({
+            [event.target.name] : event.target.value
+        })
+    };
+
+
+    componentWillMount() {
+        console.log("componentWillMount");
+        this.getPost("");
     }
 
+
+
+    getPost = (category) => {
+        const that = this;
+        axios.post("/getpost",{
+            category : category
+        }).then(function(response){
+            that.setState({
+                BoardList : response.data,
+                category : category
+            });
+        }).catch(function() {
+
+        })
+    };
+
     render(){
+
         const Categories = this.props.boardCategory.map(function(data){
             return (<option key={data.bc_id} value={data.bc_id}>{data.bc_name}</option>);
+        });
+
+        const Posts = this.state.BoardList.map(function(data){
+            return (<BoardPost post={data} key={data.bp_id}/>);
         });
 
         return(
             <React.Fragment>
                 <Board_Header>
                     <rs.Button style={buttonStyle} onClick={this.goPost}>글쓰기</rs.Button>
-                    <rs.Input style={selectStyle} type="select" name="select" id="exampleSelect">
+                    <rs.Input style={selectStyle} type="select" name="category"  onChange={this.changeValue}>
                         <option value="">전체</option>
                         {Categories}
                     </rs.Input>
@@ -73,7 +124,8 @@ class BoardList extends React.Component{
                     <rs.Table>
                         <colgroup>
                             <col />
-                            <col width="60%" />
+                            <col width="45%" />
+                            <col />
                             <col />
                             <col />
                             <col />
@@ -84,10 +136,12 @@ class BoardList extends React.Component{
                             <th>제목</th>
                             <th>덧글</th>
                             <th>조회수</th>
+                            <th>작성자</th>
                             <th>최근 수정일</th>
                         </tr>
                         </thead>
                         <tbody>
+                            {Posts}
                         </tbody>
                     </rs.Table>
                 </Board_wrapper>

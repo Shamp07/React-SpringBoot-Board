@@ -18,8 +18,8 @@ class Board extends React.Component {
             <Board_layout>
                 {
                     this.props.page === "BoardList"
-                        ? (<BoardList changePage={this.props.changePage} boardCategory={this.props.boardCategory}/>)
-                        : (<BoardPosting boardCategory={this.props.boardCategory} />)
+                        ? (<BoardList loginYN={this.props.loginYN} changePage={this.props.changePage} boardCategory={this.props.boardCategory} ToggleAlertModal={this.props.ToggleAlertModal}/>)
+                        : (<BoardPosting loginYN={this.props.loginYN} changePage={this.props.changePage} boardCategory={this.props.boardCategory} ToggleAlertModal={this.props.ToggleAlertModal} />)
                 }
             </Board_layout>
         )
