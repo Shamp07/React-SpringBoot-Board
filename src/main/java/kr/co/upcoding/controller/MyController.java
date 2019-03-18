@@ -28,7 +28,7 @@ public class MyController {
     BoardMapper boardMapper;
 
  
-    @GetMapping("/")
+    @GetMapping(value = {"/", "/posting" })
     public String page(Model model) {
         model.addAttribute("pageName", "main");
         return "page";

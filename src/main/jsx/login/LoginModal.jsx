@@ -5,18 +5,18 @@ import axios from 'axios';
 const grpStyle = {
     margin : "10px 0px",
     color : "black !important",
-}
+};
 
 const inputStyle ={
     fontFamily : "aria"
-}
+};
 
 class LoginModal extends React.Component {
 
     state = {
         id : "",
         pw : ""
-    }
+    };
 
     onLogin = () => {
         this.props.ToggleLoadingModal();
@@ -31,7 +31,7 @@ class LoginModal extends React.Component {
                 setTimeout(function(){
                     that.props.ToggleLoadingModal();
 
-                    if(response.data == "Success"){
+                    if(response.data === "Success"){
                         that.props.ToggleModal();
                         that.props.ToggleAlertModal("로그인 성공적으로 완료되었습니다.");
                         that.props.sessionCheck();
@@ -44,13 +44,13 @@ class LoginModal extends React.Component {
             .catch(function (error) {
                 console.log(error);
             });
-    }
+    };
 
     changeValue = (event) => {
         this.setState({
             [event.target.name] : event.target.value
         })
-    }
+    };
 
 
     render() {

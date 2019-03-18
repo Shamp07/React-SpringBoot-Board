@@ -59,7 +59,7 @@ class Menubar extends React.Component {
         }).catch(function(){
 
         })
-    }
+    };
 
     render() {
 
@@ -79,8 +79,8 @@ class Menubar extends React.Component {
                                 )
                                 : (
                                     <React.Fragment>
-                                        <BoardLink>{this.props.userName}님 환영합니다! <br></br> </BoardLink>
-                                        <br></br>
+                                        <BoardLink>{this.props.userName}님 환영합니다! <br/> </BoardLink>
+                                        <br/>
                                         <BoardLink onClick={this.logout}>로그아웃</BoardLink>
                                     </React.Fragment>
                                 )

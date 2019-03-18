@@ -3,6 +3,8 @@ import * as rs from "reactstrap";
 import styled from "styled-components";
 import axios from "axios";
 import BoardPost from './BoardPost.jsx';
+import { Link } from 'react-router-dom';
+
 
 const Board_Header = styled.div`
             height : 150px;
@@ -58,10 +60,11 @@ class BoardList extends React.Component{
     goPost = () => {
         if(!this.props.loginYN){
             this.props.ToggleAlertModal("로그인을 하셔야 글을 작성하실 수 있습니다.");
-            return;
+            return false;
         }
 
-        this.props.changePage("BoardPosting");
+        this.props.history.push('/posting');
+
     };
 
     changeValue = (event) => {
@@ -77,6 +80,8 @@ class BoardList extends React.Component{
 
 
     componentWillMount() {
+        console.log(this.props);
+
         console.log("componentWillMount");
         this.getPost("");
     }
@@ -103,8 +108,8 @@ class BoardList extends React.Component{
             return (<option key={data.bc_id} value={data.bc_id}>{data.bc_name}</option>);
         });
 
-        const Posts = this.state.BoardList.map(function(data){
-            return (<BoardPost post={data} key={data.bp_id}/>);
+        const Posts = this.state.BoardList.map(function(data,index){
+            return (<BoardPost post={data} key={data.bp_id} index={index}/>);
         });
 
         return(

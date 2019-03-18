@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import BoardList from './BoardList.jsx';
+import { Route , BrowserRouter as Router } from 'react-router-dom';
+import { } from 'react-router';
 import BoardPosting from './BoardPosting.jsx';
 
 
@@ -15,13 +17,21 @@ const Board_layout = styled.div`
 class Board extends React.Component {
     render(){
         return(
-            <Board_layout>
-                {
-                    this.props.page === "BoardList"
-                        ? (<BoardList loginYN={this.props.loginYN} changePage={this.props.changePage} boardCategory={this.props.boardCategory} ToggleAlertModal={this.props.ToggleAlertModal}/>)
-                        : (<BoardPosting loginYN={this.props.loginYN} changePage={this.props.changePage} boardCategory={this.props.boardCategory} ToggleAlertModal={this.props.ToggleAlertModal} />)
-                }
-            </Board_layout>
+                <Board_layout>
+                        <Route
+                            exact path="/"
+                            render={({location, history}) => (
+                                <BoardList history={history} location={location} loginYN={this.props.loginYN} changePage={this.props.changePage} boardCategory={this.props.boardCategory} ToggleAlertModal={this.props.ToggleAlertModal} />
+                            )}
+                        />
+                        <Route
+                            exact path="/posting"
+                            render={({location, history}) => (
+                                <BoardPosting history={history} loginYN={this.props.loginYN} changePage={this.props.changePage} boardCategory={this.props.boardCategory} ToggleAlertModal={this.props.ToggleAlertModal} />
+                            )}
+                        />
+
+                </Board_layout>
         )
     }
 

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import * as rs from 'reactstrap';
 import '../../webapp/css/custom.css';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -57,9 +58,9 @@ class BoardPosting extends React.Component {
             bp_title : this.state.title,
             bp_content : this.state.content
         }).then(function(response){
-            console.log(response.data);
-            if(response.data == "Success"){
-                that.goBoardList();
+            const res = response.data;
+            if(res === "Success"){
+                that.props.history.push('/');
             }
         }).catch(function(){
 
@@ -75,7 +76,7 @@ class BoardPosting extends React.Component {
 
     goBoardList = () => {
         this.props.changePage("BoardList");
-    }
+    };
 
     render(){
         const Categories = this.props.boardCategory.map(function(data){
@@ -100,6 +101,7 @@ class BoardPosting extends React.Component {
 
                         } }
                         onBlur={ editor => {
+
                         } }
                         onChange={ ( event, editor ) => {
                             this.setState({
@@ -109,7 +111,7 @@ class BoardPosting extends React.Component {
                     />
                 </Board_wrapper>
                 <PostFooter>
-                    <rs.Button color="primary" onClick={this.addPost} >등록</rs.Button>{'     '}<rs.Button onClick={this.goBoardList}>취소</rs.Button>
+                    <rs.Button color="primary" onClick={this.addPost} >등록</rs.Button>{' '}<Link to="/"><rs.Button>취소</rs.Button></Link>
                 </PostFooter>
             </React.Fragment>
         )

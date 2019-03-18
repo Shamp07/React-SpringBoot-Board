@@ -22,6 +22,7 @@
         FROM BOARD_POST bp, ACCOUNT ac
         WHERE bp.BP_WRITER = ac.U_ID
         AND bp.BC_ID LIKE '%' || '${value}' || '%'
+        ORDER BY BP_ID DESC
     </select>
 
 

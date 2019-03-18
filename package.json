@@ -24,6 +24,8 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-draft-wysiwyg": "^1.13.2",
+    "react-router": "^4.4.0",
+    "react-router-dom": "^4.4.0",
     "reactstrap": "^7.1.0",
     "styled-components": "^4.1.3"
   },

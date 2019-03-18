@@ -5,13 +5,13 @@ import styled from 'styled-components';
 const Text = styled.span`
             vertical-align : middle;
             font-size : 20px;
-        `
+        `;
 
 class AlertModal extends React.Component {
 
     Toggle = () => {
         this.props.ToggleAlertModal("");
-    }
+    };
 
     render() {
 

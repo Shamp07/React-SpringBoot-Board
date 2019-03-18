@@ -14,7 +14,7 @@ class BoardPost extends React.Component{
         return(
             <React.Fragment>
                 <tr>
-                    <td>{bp_id}</td>
+                    <td>{this.props.index+1}</td>
                     <td><Title>{bp_title}</Title></td>
                     <td>0</td>
                     <td>{bp_views}</td>
