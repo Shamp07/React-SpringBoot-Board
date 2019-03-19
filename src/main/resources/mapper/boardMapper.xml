@@ -25,5 +25,31 @@
         ORDER BY BP_ID DESC
     </select>
 
+    <select id="getPostData" resultType="PostVO" parameterType="String">
+        SELECT bp.*, bc.bc_name  as bp_category_name, ac.USER_NAME as bp_writer_name  FROM BOARD_POST bp, BOARD_CATEGORY bc, ACCOUNT ac
+          WHERE bp.BP_ID = '${value}'
+          AND bp.BC_ID = bc.BC_ID
+          AND bp.BP_WRITER = ac.U_ID
+    </select>
+
+    <insert id="addReply" parameterType="ReplyVO">
+      INSERT INTO BOARD_REPLY VALUES(
+        (SELECT NVL(MAX(BR_ID),0)+1 FROM BOARD_REPLY),
+        '${bp_id}',
+        '${br_id_reply}',
+        '${br_writer}',
+        sysdate,
+        '${br_content}',
+        '${br_depth}'
+      )
+    </insert>
+
+    <select id="getReplyList" parameterType="String" resultType="ReplyVO">
+      SELECT br.*,ac.USER_NAME AS br_writer_name FROM BOARD_REPLY br, ACCOUNT ac
+        WHERE br.BP_ID = '${value}'
+        AND br.BR_WRITER = ac.U_ID
+        ORDER BY br.BR_ID
+    </select>
+
 
 </mapper>

@@ -13,6 +13,15 @@ public class PostVO{
 
     // 개인적으로 만듬
     String bp_writer_name;
+    String bp_category_name;
+
+    public String getBp_category_name() {
+        return bp_category_name;
+    }
+
+    public void setBp_category_name(String bp_category_name) {
+        this.bp_category_name = bp_category_name;
+    }
 
     public String getBp_id() {
         return bp_id;

@@ -8,14 +8,18 @@ const Title = styled.a`
 
 class BoardPost extends React.Component{
 
+    goPostView = () => {
+        this.props.goPostView(this.props.post.bp_id);
+    }
+
     render(){
-        const { bp_id , bp_title, bp_views, bp_writer_name, bp_date } = this.props.post;
+        const { bp_title, bp_views, bp_writer_name, bp_date } = this.props.post;
 
         return(
             <React.Fragment>
                 <tr>
                     <td>{this.props.index+1}</td>
-                    <td><Title>{bp_title}</Title></td>
+                    <td><Title onClick={this.goPostView}>{bp_title}</Title></td>
                     <td>0</td>
                     <td>{bp_views}</td>
                     <td>{bp_writer_name}</td>

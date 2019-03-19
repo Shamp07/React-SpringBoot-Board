@@ -102,14 +102,20 @@ class BoardList extends React.Component{
         })
     };
 
+    goPostView = (page) => {
+        this.props.history.push('post/'+page);
+    }
+
     render(){
 
         const Categories = this.props.boardCategory.map(function(data){
             return (<option key={data.bc_id} value={data.bc_id}>{data.bc_name}</option>);
         });
 
+        const that = this;
+
         const Posts = this.state.BoardList.map(function(data,index){
-            return (<BoardPost post={data} key={data.bp_id} index={index}/>);
+            return (<BoardPost post={data} goPostView={that.goPostView} key={data.bp_id} index={index}/>);
         });
 
         return(

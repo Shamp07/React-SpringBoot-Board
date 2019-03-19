@@ -11,7 +11,10 @@ module.exports = {
         board : './board/Board.jsx',
         boardlist : './board/BoardList.jsx',
         boardposting : './board/BoardPosting.jsx',
-        boardpost : './board/BoardPost.jsx'
+        boardpost : './board/BoardPost.jsx',
+        boardpostview : './board/BoardPostView.jsx',
+        boardreplyform : './board/reply/BoardReplyForm.jsx',
+        boardreply : "./board/reply/BoardReply.jsx"
     },
     devtool: 'sourcemaps',
     cache: true,

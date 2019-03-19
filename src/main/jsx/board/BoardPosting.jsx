@@ -1,10 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
 import * as rs from 'reactstrap';
-import '../../webapp/css/custom.css';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
@@ -19,7 +17,6 @@ const Board_Header = styled.div`
 
 const Board_wrapper = styled.div`
     width : 900px;
-    height : 70vh;
     border : 1px solid #e6e6e6;
     padding : 0.8rem;
     margin-top : 200px;
@@ -72,10 +69,6 @@ class BoardPosting extends React.Component {
             [event.target.name] : event.target.value,
             nameInput : event.target
         });
-    };
-
-    goBoardList = () => {
-        this.props.changePage("BoardList");
     };
 
     render(){
