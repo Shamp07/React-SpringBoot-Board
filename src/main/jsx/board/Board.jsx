@@ -20,7 +20,7 @@ class Board extends React.Component {
                         <Route
                             exact path="/"
                             render={({location, history}) => (
-                                <BoardList history={history} location={location} loginYN={this.props.loginYN} boardCategory={this.props.boardCategory} ToggleAlertModal={this.props.ToggleAlertModal} />
+                                <BoardList category={this.props.category} history={history} location={location} loginYN={this.props.loginYN} boardCategory={this.props.boardCategory} ToggleAlertModal={this.props.ToggleAlertModal} />
                             )}
                         />
                         <Route

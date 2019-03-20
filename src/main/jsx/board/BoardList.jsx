@@ -80,12 +80,12 @@ class BoardList extends React.Component{
 
 
     componentWillMount() {
-        console.log(this.props);
-
-        console.log("componentWillMount");
-        this.getPost("");
+        this.getPost(this.props.category);
     }
 
+    componentWillReceiveProps(nextProps, nextContext) {
+        this.getPost(nextProps.category);
+    }
 
 
     getPost = (category) => {
@@ -107,12 +107,10 @@ class BoardList extends React.Component{
     }
 
     render(){
-
+        const that = this;
         const Categories = this.props.boardCategory.map(function(data){
             return (<option key={data.bc_id} value={data.bc_id}>{data.bc_name}</option>);
         });
-
-        const that = this;
 
         const Posts = this.state.BoardList.map(function(data,index){
             return (<BoardPost post={data} goPostView={that.goPostView} key={data.bp_id} index={index}/>);
@@ -122,7 +120,7 @@ class BoardList extends React.Component{
             <React.Fragment>
                 <Board_Header>
                     <rs.Button style={buttonStyle} onClick={this.goPost}>글쓰기</rs.Button>
-                    <rs.Input style={selectStyle} type="select" name="category"  onChange={this.changeValue}>
+                    <rs.Input style={selectStyle} type="select" name="category"  onChange={this.changeValue} value={this.props.category}>
                         <option value="">전체</option>
                         {Categories}
                     </rs.Input>

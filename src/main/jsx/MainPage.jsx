@@ -28,7 +28,8 @@ class MainPage extends React.Component {
 
         page : "BoardList",
 
-        boardCategory : []
+        boardCategory : [],
+        category : ""
     };
 
     componentWillMount() {
@@ -73,6 +74,11 @@ class MainPage extends React.Component {
         });
     };
 
+    changeCategory = (category) => {
+        this.setState({
+            category : category
+        })
+    }
 
 
 
@@ -104,8 +110,8 @@ class MainPage extends React.Component {
         return (
             <BrowserRouter>
                 <Wrapper>
-                    <Menubar ToggleModal={this.ToggleModal} userName={this.state.userName} sessionCheck={this.sessionCheck}/>
-                    <Board changePage={this.changePage} boardCategory={this.state.boardCategory} ToggleAlertModal={this.ToggleAlertModal} loginYN={this.state.loginYN}/>
+                    <Menubar ToggleModal={this.ToggleModal} userName={this.state.userName} sessionCheck={this.sessionCheck} boardCategory={this.state.boardCategory} changeCategory={this.changeCategory}/>
+                    <Board boardCategory={this.state.boardCategory} ToggleAlertModal={this.ToggleAlertModal} loginYN={this.state.loginYN} category={this.state.category}/>
                     <LoginModal onModalYN={this.state.onModalYN} ToggleModal={this.ToggleModal} ToggleLoadingModal={this.ToggleLoadingModal} ToggleAlertModal={this.ToggleAlertModal} sessionCheck={this.sessionCheck}/>
                     <LoadingModal onLoadingModalYN={this.state.onLoadingModalYN} ToggleLoadingModal={this.ToggleLoadingModal}/>
                     <AlertModal onAlertModalYN={this.state.onAlertModalYN} ToggleAlertModal={this.ToggleAlertModal} alertLabel={this.state.alertLabel}/>

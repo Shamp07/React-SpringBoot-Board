@@ -14,7 +14,8 @@ module.exports = {
         boardpost : './board/BoardPost.jsx',
         boardpostview : './board/BoardPostView.jsx',
         boardreplyform : './board/reply/BoardReplyForm.jsx',
-        boardreply : "./board/reply/BoardReply.jsx"
+        boardreply : "./board/reply/BoardReply.jsx",
+        menucategory : './menu/MenuCategory.jsx'
     },
     devtool: 'sourcemaps',
     cache: true,

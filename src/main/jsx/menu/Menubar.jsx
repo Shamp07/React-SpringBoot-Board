@@ -2,6 +2,7 @@ import React from 'react';
 import * as rs from 'reactstrap';
 import styled from 'styled-components';
 import axios from 'axios';
+import MenuCategory from './MenuCategory.jsx'
 
 const Box = styled.div`
           padding: 1.5rem;
@@ -22,23 +23,15 @@ const Sub_title = styled.div`
             cursor : default;
         `;
 
-
 const BoardLink = styled.a`
-            cursor : pointer;
-            color : #hsla(0,0%,100%,.7); !important;
-            &:hover {
-                color : #bbb !important;
-            };
-        `;
+    cursor : pointer;
+    color : #hsla(0,0%,100%,.7); !important;
+    &:hover {
+        color : #bbb !important;
+    };
+`;
 
-const liStyle = {
-    backgroundColor : "#24292e",
-    borderColor : "#e6e6e6",
-    borderRight : "none",
-    borderLeft : "none",
-    borderTop : "0.5px solid #555",
-    borderBottom : "none"
-};
+
 
 class Menubar extends React.Component {
 
@@ -62,9 +55,12 @@ class Menubar extends React.Component {
     };
 
     render() {
+        const that = this;
+        const Categories = this.props.boardCategory.map(function(data){
+            return (<MenuCategory key={data.bc_id} changeCategory={that.props.changeCategory} category={data}/>);
+        });
 
-
-    return(
+        return(
 
                 <Box>
                     <Title>게시판</Title>
@@ -87,11 +83,7 @@ class Menubar extends React.Component {
                         }
                     </Sub_title>
                     <rs.ListGroup>
-                        <rs.ListGroupItem style={liStyle}><BoardLink>Q&A</BoardLink></rs.ListGroupItem>
-                        <rs.ListGroupItem style={liStyle}><BoardLink>기술</BoardLink></rs.ListGroupItem>
-                        <rs.ListGroupItem style={liStyle}><BoardLink>커뮤니티</BoardLink></rs.ListGroupItem>
-                        <rs.ListGroupItem style={liStyle}><BoardLink>칼럼</BoardLink></rs.ListGroupItem>
-                        <rs.ListGroupItem style={liStyle}><BoardLink>구인구직</BoardLink></rs.ListGroupItem>
+                        {Categories}
                     </rs.ListGroup>
                 </Box>
         )

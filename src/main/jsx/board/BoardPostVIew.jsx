@@ -4,7 +4,7 @@ import * as rs from 'reactstrap';
 import styled from "styled-components";
 import axios from 'axios';
 import CKEditor from '@ckeditor/ckeditor5-react';
-import ClassicEditor from "@ckeditor/ckeditor5-build-balloon";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import BoardReplyForm from "./reply/BoardReplyForm.jsx";
 
 
@@ -15,7 +15,6 @@ const Board_Header = styled.div`
     width : 900px;
     margin : 0 auto;
 `;
-
 
 const Board_wrapper = styled.div`
     width : 900px;
